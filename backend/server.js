@@ -3,6 +3,7 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import rateLimit from 'express-rate-limit';
+import connectDB from "./db/config.js";
 
 dotenv.config();
 
