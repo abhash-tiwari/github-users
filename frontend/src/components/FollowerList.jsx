@@ -48,6 +48,7 @@ const FollowerList = ({
   const handleFollowerClick = useCallback(async (username) => {
     setError(null);
 
+    // Check if user data is already cached
     if (cachedUsers[username]) {
       const { userData, repos, userFollowers } = cachedUsers[username];
       setUserData(userData);
@@ -60,12 +61,14 @@ const FollowerList = ({
     setIsLoading(true);
 
     try {
+      // Fetch all data in parallel
       const [userData, repos, userFollowers] = await Promise.all([
         fetchUserData(username),
         fetchUserRepos(username),
         fetchUserFollowers(username)
       ]);
 
+      // Save to cache
       setCachedUsers(prevCache => ({
         ...prevCache,
         [username]: {
@@ -75,10 +78,12 @@ const FollowerList = ({
         }
       }));
 
+      // Update app state
       setUserData(userData);
       setRepositories(repos);
       setFollowers(userFollowers);
 
+      // Save profile to backend
       try {
         await fetch(`${API_BASE_URL}/${username}/save`, {
           method: 'POST',
@@ -89,6 +94,7 @@ const FollowerList = ({
         });
       } catch (err) {
         console.error('Failed to save profile:', err);
+        // Don't throw error here as it's not critical
       }
 
       navigate('/');
@@ -100,6 +106,7 @@ const FollowerList = ({
     }
   }, [navigate, setUserData, setRepositories, setFollowers, setCachedUsers, cachedUsers]);
 
+  // Loading state for initial render
   if (isLoading && followers.length === 0) {
     return (
       <div className="followers-container">
@@ -108,6 +115,7 @@ const FollowerList = ({
     );
   }
 
+  // Empty state
   if (!followers || followers.length === 0) {
     return (
       <div className="followers-container">
@@ -120,6 +128,7 @@ const FollowerList = ({
     );
   }
 
+  // Error state
   if (error && !isLoading) {
     return (
       <div className="followers-container">
@@ -180,6 +189,7 @@ const FollowerList = ({
         ))}
       </div>
 
+      {/* Loading overlay */}
       {isLoading && (
         <div className="loading-overlay">
           <div className="loading-spinner"></div>
