@@ -1,35 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import UserInfo from './components/UserInfo';
+import RepoList from './components/RepoList';
+import FollowerList from './components/FollowerList';
+import UserProfile from './components/UserProfile';
+import RepoDetails from './components/RepoDeatils';
+import './app.css';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = () => {
+  const [userData, setUserData] = useState(null);
+  const [repositories, setRepositories] = useState([]);
+  const [followers, setFollowers] = useState([]);
+  const [cachedUsers, setCachedUsers] = useState({});
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="app-container">
+        <UserInfo 
+          setUserData={setUserData} 
+          setRepositories={setRepositories} 
+          setFollowers={setFollowers}
+        />
+        
+        <Routes>
+          <Route path="/" element={
+            <>
+              <h1 className="main-title">GitHub Profile Search</h1>
+              {userData && <UserProfile user={userData} />}
+              {repositories.length > 0 && <RepoList repositories={repositories} />}
+            </>
+          } />
+          
+          <Route path="/repo/:username/:repoName" element={
+            <RepoDetails repositories={repositories} />
+          } />
+          
+          <Route path="/user/:username/followers" element={
+            <FollowerList 
+              followers={followers} 
+              setUserData={setUserData}
+              setRepositories={setRepositories}
+              setFollowers={setFollowers}
+              cachedUsers={cachedUsers}
+              setCachedUsers={setCachedUsers}
+            />
+          } />
+        </Routes>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
-
-export default App
+    </Router>
+  );
+};
+export default App;
