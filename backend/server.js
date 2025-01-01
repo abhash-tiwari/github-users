@@ -19,7 +19,7 @@ const limiter = rateLimit({
 
 app.use(limiter);
 app.use(cors({
-  origin: ['http://localhost:3000', 'https://github-users-chi-one.vercel.app']
+  origin: ['http://localhost:8000', 'https://github-users-d9hb.onrender.com']
 }));
 app.use(express.json());
 
