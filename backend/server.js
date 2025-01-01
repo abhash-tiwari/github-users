@@ -18,18 +18,16 @@ const limiter = rateLimit({
 });
 
 app.use(limiter);
-app.use(cors({
-  origin: ['http://localhost:8000', 'https://github-users-d9hb.onrender.com']
-}));
+app.use(cors());
 app.use(express.json());
 
 const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "/frontend/dist")));
 app.use("/api/users", userRoutes);
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
-// });
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
 
 app.listen(port, () => {
   connectDB();

@@ -1,4 +1,4 @@
-const API_BASE_URL = '/api/users';
+const API_BASE_URL = 'https://github-users-d9hb.onrender.com/api/users';
 
 export const githubService = {
   async getUserProfile(username) {
