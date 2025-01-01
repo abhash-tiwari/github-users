@@ -111,20 +111,19 @@ export const createUser = async (req, res) => {
 export const deleteUser = async (req, res) => {
   const { username } = req.params;
   try {
-    const user = await User.findOneAndUpdate(
-      { username }, 
-      { soft_deleted: true }
-    );
+    const user = await User.findOne({ username });
     if (!user) {
       return res.status(404).json({ message: "User not found" });
     }
-    res.status(200).json({ message: "User deleted successfully" });
+
+    await user.deleteOne();
+    res.status(200).json({ message: "User permanently deleted" });
+    
   } catch (error) {
-    console.log("Error in Deleting userProfile", error.message);
+    console.log("Error in deleting user profile:", error.message);
     res.status(500).json({ message: "Internal Server Error" });
   }
 };
-
 
 export const updateUser = async (req, res) => {
   const { username } = req.params;
