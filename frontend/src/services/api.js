@@ -3,6 +3,7 @@ const API_BASE_URL = '/api/users';
 export const githubService = {
   async getUserProfile(username) {
     const response = await fetch(`${API_BASE_URL}/${username}`);
+    console.log(response)
     if (!response.ok) throw new Error('User not found');
     return response.json();
   },

@@ -1,6 +1,7 @@
 import React, { useState, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import UserInfo from './components/UserInfo';
+import './App.css';
 
 // Lazy Load Components
 const UserProfile = React.lazy(() => import('./components/UserProfile'));
@@ -8,7 +9,6 @@ const RepoList = React.lazy(() => import('./components/RepoList'));
 const FollowerList = React.lazy(() => import('./components/FollowerList'));
 const RepoDetails = React.lazy(() => import('./components/RepoDeatils'));
 
-import './app.css';
 
 const App = () => {
   const [userData, setUserData] = useState(null);
