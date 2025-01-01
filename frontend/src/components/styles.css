@@ -505,7 +505,7 @@
     font-size: 14px;
     margin-right: 10px;
   }
-  
+
 .repo-list {
     padding: 24px;
   }
@@ -807,11 +807,11 @@
     }
   
     .repo-tags {
-      gap: 0.25rem;
+      gap: 0.27rem;
     }
   
     .tag {
-      font-size: 0.75rem;
+      font-size: 0.70rem;
       padding: 0.25rem 0.5rem;
     }
   
