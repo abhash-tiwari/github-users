@@ -2,6 +2,7 @@ import React, { useState, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import UserInfo from './components/UserInfo';
 
+// Lazy Load Components
 const UserProfile = React.lazy(() => import('./components/UserProfile'));
 const RepoList = React.lazy(() => import('./components/RepoList'));
 const FollowerList = React.lazy(() => import('./components/FollowerList'));
@@ -24,7 +25,7 @@ const App = () => {
           setFollowers={setFollowers}
         />
         
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<div>Loading...</div>}> 
           <Routes>
             <Route path="/" element={
               <>

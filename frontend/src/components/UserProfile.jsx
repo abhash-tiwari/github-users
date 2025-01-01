@@ -13,7 +13,7 @@ const UserProfile = ({ user }) => {
           <h2>{user.name || user.login}</h2>
           <p className="profile-bio">{user.bio}</p>
           <p className="profile-location">
-            {user.location && <span>📍 {user.location}</span>}
+            {user.location && <span> 📍 {user.location}</span>}
           </p>
           {user.blog && (
             <a 
