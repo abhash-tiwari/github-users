@@ -18,7 +18,9 @@ const limiter = rateLimit({
 });
 
 app.use(limiter);
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://github-users-chi-one.vercel.app']
+}));
 app.use(express.json());
 
 const __dirname = path.resolve();
