@@ -42,13 +42,13 @@ const RepoList = ({ repositories }) => {
               </p>
               <div className="repo-stats">
                 {repo.stargazers_count > 0 && (
-                  <span className="stat-item">⭐ {repo.stargazers_count}</span>
+                  <span className="stat-item"> ⭐ {repo.stargazers_count}</span>
                 )}
                 {repo.forks_count > 0 && (
-                  <span className="stat-item">🔄 {repo.forks_count}</span>
+                  <span className="stat-item"> 🔄 {repo.forks_count}</span>
                 )}
                 {repo.language && (
-                  <span className="stat-item">{repo.language}</span>
+                  <span className="stat-item"> {repo.language}</span>
                 )}
               </div>
             </div>

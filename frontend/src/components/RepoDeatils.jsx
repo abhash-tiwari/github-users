@@ -57,19 +57,19 @@ const RepoDetails = ({ repositories }) => {
           </p>
         <div className="">
           <span>Owner:</span>
-          <span>{repo.owner.login}</span>
+          <span> {repo.owner.login}</span>
         </div>
         <div className="">
           <span>Stars:</span>
-          <span>⭐ {repo.stargazers_count}</span>
+          <span> ⭐ {repo.stargazers_count}</span>
         </div>
         <div className="">
           <span>Forks:</span>
-          <span>🔄 {repo.forks_count}</span>
+          <span> 🔄 {repo.forks_count}</span>
         </div>
         <div className="">
           <span>Language:</span>
-          <span>{repo.language || 'N/A'}</span>
+          <span> {repo.language || 'N/A'}</span>
         </div>
         <div className="">
           <span>Created:</span>

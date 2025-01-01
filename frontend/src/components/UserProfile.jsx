@@ -31,8 +31,8 @@ const UserProfile = ({ user }) => {
         <Link to={`/user/${user.login}/followers`} className="followers-link">
           👥 {user.followers} Followers
         </Link>
-        <span>👁️ {user.following} Following</span>
-        <span>📚 {user.public_repos} Repositories</span>
+        <span>👁️ {user.following} Following </span>
+        <span>📚 {user.public_repos} Repositories </span>
       </div>
     </div>
   );

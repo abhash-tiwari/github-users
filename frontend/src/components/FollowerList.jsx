@@ -139,7 +139,7 @@ const FollowerList = ({
         <div className="error-container">
           <p className="error-message">{error}</p>
           <button 
-            onClick={() => setError(null)} 
+            onClick={() =>setError(null)} 
             className="retry-button"
           >
             Retry
@@ -153,7 +153,7 @@ const FollowerList = ({
     <div className="followers-container">
       <div className="followers-header">
         <Link to="/" className="back-button">← Back to Search</Link>
-        <h2>Followers ({followers.length})</h2>
+        <h2> Followers ({followers.length})</h2>
       </div>
 
       <div className="followers-grid">

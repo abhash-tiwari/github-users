@@ -9,7 +9,9 @@ import { githubService } from '../services/api';
   const navigate = useNavigate();
 
   const handleSearch = async () => {
-    if (!username.trim()) return;
+    if (!username.trim()){
+     return
+    }
     
     setLoading(true);
     setError(null);
@@ -44,7 +46,7 @@ import { githubService } from '../services/api';
         onChange={(e) => setUsername(e.target.value)}
         onKeyPress={(e) => e.key === 'Enter' && handleSearch()}
         placeholder="Enter GitHub username"
-        className="search-input"
+        className="search-input sinput"
       />
       <button 
         onClick={handleSearch} 
