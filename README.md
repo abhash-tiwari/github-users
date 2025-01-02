@@ -153,6 +153,3 @@ The main component.
 - [Abhash Tiwari](https://www.github.com/abhash-tiwari)
 
 
-
-```
-
