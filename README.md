@@ -1,65 +1,41 @@
-GitHub User Management API
+Github User Management
 This project provides an API to manage GitHub user data, identify mutual followers, and store relevant details in a database. The backend exposes several endpoints for interacting with GitHub data, and the frontend retrieves and displays this information.
-
-Folder Structure
-├── backend
-│   ├── controllers
-│   ├── db
-│   │   └── config.js
-│   ├── models
-│   ├── routes
-│   └── server.js
-└── frontend
-    ├── src
-    │   ├── components
-    │   ├── services
-    │   │   └── api.js
-    │   └── App.jsx
-    └── vite.config.js
-Backend API
-The backend serves as an API that fetches and manages GitHub user data. The routes are structured under the /api/users prefix.
 
 API Endpoints
 Get User Profile
-
-Route: GET /api/users/:username
-Description: Fetches the GitHub profile data for the provided username.
-Save User Profile
-
-Route: POST /api/users/:username/save
-Description: Saves GitHub profile data in the database. If the user's data already exists, it won't call the GitHub API again.
-Update User Profile
-
-Route: PUT /api/users/:username
-Description: Updates the fields such as location, blog, and bio for a given user in the database.
-Delete User Profile (Soft Delete)
-
-Route: DELETE /api/users/:username
-Description: Soft deletes the user's data based on the provided username.
+  GET /api/users/:username
+Parameter	Type	Description
+github_token	string	Fetches the GitHub profile data for the provided username.
 Fetch Repositories
-
-Route: GET /api/users/:username/repos
-Description: Fetches the list of repositories for the provided username.
+  GET /api/users/:username/repos
+Parameter	Type	Description
+github_token	string	Fetches the list of repositories for the provided username
 Fetch Followers
-
-Route: GET /api/users/:username/followers
-Description: Fetches the list of followers for the provided username.
-Find Mutual Friends
-
-Route: GET /api/users/:username/mutual-friends
-Description: Finds all the users where the provided username and the other user mutually follow each other, and returns them as friends.
+  GET /api/users/:username/followers
+Parameter	Type	Description
+github_token	string	Finds all the users where the provided username and the other user mutually follow each other, and returns them as friends.
 Search Users
-
-Route: GET /api/users/search/users
-Description: Allows searching users in the database by username, location, etc.
-Get Sorted Users
-
-Route: GET /api/users/sorted/users
-Description: Returns a list of all users from the database, sorted by fields such as public_repos, followers, etc.
+  GET /api/users/search/users
+Parameter	Type	Description
+github_token	string	Allows searching users in the database by username, location, etc.
+Save User
+  POST /api/users/:username/save
+Parameter	Type	Description
+id	string	Saves GitHub profile data in the database. If the user's data already exists, it won't call the GitHub API again.
+Sorted User
+  GET /api/users/sorted/users
+Parameter	Type	Description
+github_token	string	Returns a list of all users from the database, sorted by fields.
+Update User
+  PUT /api/users/:username
+Parameter	Type	Description
+id	string	Updates the fields such as location, blog, and bio for a given user in the database.
+Delete User Profile
+  DELETE /api/users/:username
+Parameter	Type	Description
+id	string	Soft deletes the user's data based on the provided username.
 Installation
-
-Clone the repository:
-
+Clone the Repository git clone Documentation
 git clone https://github.com/abhash-tiwari/github-users
 cd backend
 
